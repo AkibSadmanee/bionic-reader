@@ -13,7 +13,8 @@ class TextEditor:
         self.bold_button.pack(side='top')
         
         self.text.tag_configure('bold', font=('Arial', 18, 'bold'))
-        # Add the binding
+        
+        # Add the binding for select all
         self.text.bind("<Control-Key-a>", self.select_all)
         self.text.bind("<Control-Key-A>", self.select_all)
    
@@ -24,12 +25,9 @@ class TextEditor:
         self.text.see(INSERT)
         return 'break'
         
+        
     def bold_text(self):
-        
-        # current_tags = self.text.tag_names('sel.first')
-        
         paras = self.text.get('sel.first', 'sel.last').split('\n')
-
         for i, para in enumerate(paras, start=1):
             words = para.split()
             start = 0
